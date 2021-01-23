@@ -2,6 +2,8 @@
 
 Example of how to replace the Angular HttpBackend Service with a service that uses the Fetch API to perform network requests.
 
+Goes with this medium article - [https://stuarttottle.medium.com/use-the-fetch-api-in-angular-1acafa67bbf2](https://stuarttottle.medium.com/use-the-fetch-api-in-angular-1acafa67bbf2)
+
 ## Info
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
