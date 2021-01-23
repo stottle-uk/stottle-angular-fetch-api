@@ -1,31 +1,38 @@
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  const todo = {
+    userId: 1,
+    id: 1,
+    title: 'delectus aut autem',
+    completed: false,
+  };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [HttpClientTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
   it('should create the app', () => {
+    const httpTestingController = TestBed.inject(HttpTestingController);
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
 
-  it(`should have as title 'stottle-angular-fetch-api'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('stottle-angular-fetch-api');
-  });
+    app.httpResponse$.subscribe((d) => {
+      expect(d).toEqual([todo]);
+    });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('stottle-angular-fetch-api app is running!');
+    const req = httpTestingController.expectOne(
+      'https://jsonplaceholder.typicode.com/todos'
+    );
+    expect(req.request.method).toEqual('GET');
+    expect(req.request.body).toBeNull();
+    req.flush([todo]);
   });
 });
