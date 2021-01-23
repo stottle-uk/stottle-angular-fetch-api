@@ -1,6 +1,6 @@
 # StottleAngularFetchApi
 
-Example of how to use replace the HttpBackend service in Angular with a service that uses the Fetch API.
+Example of how to replace the Angular HttpBackend Service with a service that uses the Fetch API to perform network requests.
 
 ## Info
 
