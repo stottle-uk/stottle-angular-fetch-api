@@ -1,5 +1,9 @@
 # StottleAngularFetchApi
 
+Example of how to use replace the HttpBackend service in Angular with a service that uses the Fetch API.
+
+## Info
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
 
 ## Development server
